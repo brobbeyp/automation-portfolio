@@ -94,10 +94,17 @@ try:
         loaded_tickets = json.load(file)
 
     classified_tickets = classify_tickets(loaded_tickets)
-    print("Loaded tickets:",classified_tickets)  
-    
-except ValueError as error:
+    print("Loaded tickets:", classified_tickets)
+
+    with open(
+        "ticket_report.json", "x", encoding="utf-8"
+    ) as report_file:  # Writing the results to a new file
+        json.dump(classified_tickets, report_file, indent=2)
+
+except ValueError as error:  # Exception branch for input ValueError
     print(error)
+except FileExistsError:  # Exception branch for FileExistsError
+    print("Report already exists; choose a new output filename.")
 
 # Direct Tests with Expected Errors
 print("** DIRECT TESTS **\n")
