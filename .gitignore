@@ -1,1 +1,8 @@
 __pycache__/
+
+# Private tutor documents: keep out of portfolio commits.
+/AGENTS.md
+/CURRICULUM.md
+/PROGRESS.md
+/PROJECT.md
+/README.md
