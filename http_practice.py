@@ -1,4 +1,5 @@
 import json
+from session_07 import classify_tickets
 from post_adapter import post_to_ticket
 from urllib.request import urlopen
 from content_type_check import require_json_content_type
@@ -17,7 +18,8 @@ with urlopen(url, timeout=10) as response:
 
 print("This post's type is: ", type(post), "\nThis post's content is: ", post)
 
-result = post_to_ticket(post)
-
+result = [post_to_ticket(post)]
 print("Results: ", result)
 
+classified_tickets = classify_tickets(result)
+print("Tickets after classification are: ", classified_tickets)

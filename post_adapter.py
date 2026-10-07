@@ -1,3 +1,4 @@
+
 def post_to_ticket(post):
     required_fields = ["id", "body"]
 
@@ -13,7 +14,6 @@ def post_to_ticket(post):
 
     if not isinstance(post["body"], str):
         raise ValueError("Post 'body' must be a string")
-    
 
     result = {
         "id": "T-" + str(post["id"]),
