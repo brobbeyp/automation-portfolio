@@ -13,6 +13,7 @@ try:
         print("HTTP Status is: ", status)
 
         content_type = response.headers.get("Content-Type", "")
+
         print("Content-Type is: ", content_type)
         media_type = require_json_content_type(content_type)
 
@@ -27,6 +28,8 @@ except TimeoutError as error:  # Catch timeout errors
     print("Network operation timed out:", error)
 except json.JSONDecodeError as error:  # Catch invalid JSON
     print("Response contains invalid JSON:", error)
+except ValueError as error:
+    print("Response data rejected:", error)
 else:
     print("This post's type is: ", type(post), "\nThis post's content is: ", post)
 
