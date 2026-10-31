@@ -1,5 +1,13 @@
 # Ticket Review Workflow
 
+A Python project exploring how software and AI can help review support incidents. It combines a conventional data-processing path with a model-assisted review path, making it possible to compare simple classification rules with recommendations generated from an incident description.
+
+The work includes adapting API responses into ticket records, validating input, handling failures, parsing model output, and checking that supporting evidence appears in the original message. Assertion scripts exercise the individual pieces and the ticket-processing pipeline.
+
+**What this demonstrates:** connecting Python functions into a workflow, integrating an AI API, and checking data at the boundaries between components. The project uses fictional incidents and a simplified policy as a learning environment.
+
+## Implementation overview
+
 Educational Python work using fictional incidents:
 
 1. API response -> check JSON media type -> adapt post to ticket -> validate fields and IDs -> classify message.
