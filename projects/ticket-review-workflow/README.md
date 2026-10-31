@@ -36,4 +36,4 @@ test_review_evaluation.py is a demonstration with a deliberately failing stub, n
 
 Exact-word classification is a learning exercise, not a production incident policy. Empty messages produce an invalid classification. Substring evidence matching does not prove correct reasoning. The validator does not fully enforce the prompt's follow-up-question rule. JSON-fence handling supports a narrow format. No deployment or production-readiness claim is made.
 
-Source files are unchanged. The runner, dependency note, and portfolio documentation were added for this export. See the repository verification report for actual test outcomes.
+Source files are unchanged. The runner, dependency note, and portfolio documentation were added for this export.

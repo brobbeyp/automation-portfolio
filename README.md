@@ -64,4 +64,4 @@ This is a growing portfolio of learning projects and workflow designs developed 
 
 The ticket project contains executable Python. The custom skills are written instructions that guide an assistant with compatible tools; they are not standalone applications. Each project has its own limits, and inclusion here does not imply production readiness.
 
-For setup instructions, start with the [ticket workflow guide](projects/ticket-review-workflow/README.md). For the checks performed on this collection and the work intentionally left out, see [verification notes](docs/VERIFICATION.md) and [repository scope](docs/SCOPE.md).
+For setup instructions, start with the [ticket workflow guide](projects/ticket-review-workflow/README.md).
