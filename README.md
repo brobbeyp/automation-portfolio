@@ -1,7 +1,7 @@
 # Automation & AI Workflow Portfolio
 ### Peter Brobbey
 
-I work in technical support and am building my skills in Python, API integration, and practical AI workflows. This portfolio collects projects that connect that learning to everyday problems: reviewing support tickets, planning meals, and making an AI assistant more useful during a game.
+This portfolio collects projects from my work with Python, API integration, and practical AI workflows. These workflows are minor examples to solve everyday problems I encountered: reviewing support tickets, planning meals, and making an AI assistant more useful during a game.
 
 The common thread is reliability: checking the information going in, making clear decisions about what happens next, and verifying the result.
 
