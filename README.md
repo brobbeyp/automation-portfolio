@@ -1,21 +1,67 @@
-# Automation and AI Workflow Portfolio
+# Automation & AI Workflow Portfolio
+### Peter Brobbey
 
-Selected work by Peter Brobbey in Python, API integration, structured model outputs, and assistant workflow design.
+I work in technical support and am building my skills in Python, API integration, and practical AI workflows. This portfolio collects projects that connect that learning to everyday problems: reviewing support tickets, planning meals, and making an AI assistant more useful during a game.
 
-Developed with AI assistance. Existing source snapshots are preserved; portfolio packaging and documentation were prepared with assistant help. This collection does not claim independent authorship of every line, production deployment, or measured business outcomes.
+The common thread is reliability: checking the information going in, making clear decisions about what happens next, and verifying the result.
 
-| Work | Artifact | Demonstrates |
-| --- | --- | --- |
-| [Ticket review workflow](projects/ticket-review-workflow/README.md) | Python code and assertion scripts | JSON validation, API adaptation, classification, model response parsing, evidence checks |
-| [Authenticated web workflow](skills/authenticated-web-workflow/SKILL.md) | Instruction skill and references | Access preflight, preference separation, approvals, verification |
-| [CookUnity meal planner](skills/cookunity-meal-planner/SKILL.md) | Instruction skill and references | Dynamic-menu traversal, ranking, quantity reconciliation, checkout gates |
-| [Game screen observer](skills/game-screen-observer/SKILL.md) | Instruction skill | Read-only capture, bounded retries, evidence verification |
-| [Support workflow architecture](case-studies/support-workflow.md) | Generalized case study | Research/planning separation, drafting handoff, release reconciliation |
+## What's inside
 
-Skills are procedural instructions for a compatible assistant runtime. They do not bundle standalone browser drivers or automation engines. Inclusion does not establish successful execution in every host environment.
+### Ticket Review Workflow
+**Python · APIs · JSON · Testing · OpenAI**
 
-Start with the ticket workflow README. See [verification](docs/VERIFICATION.md) and [scope](docs/SCOPE.md). Originals were copied rather than moved.
+A learning project that explores how to turn a support incident into a useful recommendation.
 
-No personal account profiles, credentials, raw workplace skills, internal ticket records, chat archives, resumes, or private career notes are included. The support example is fictional. Live integrations require the user's own access and authorization.
+The Python code handles two related tasks: converting API data into validated tickets for simple classification, and requesting an AI review of an incident. The review includes a recommendation, a quote from the original message as evidence, and a follow-up question when more information is needed.
 
-No license has been selected. Public visibility does not by itself grant reuse rights.
+The project includes input validation, error handling, response parsing, and tests. It uses fictional incidents and a simplified review policy.
+
+[Explore the code and setup guide →](projects/ticket-review-workflow/README.md)
+
+### CookUnity Meal Planner
+**Personalization · Browser Workflows · Feedback**
+
+A custom assistant skill for making weekly meal selection more deliberate.
+
+It lays out how to review the current menu, account for confirmed likes and dislikes, balance familiar meals with new choices, and check that the final cart matches the approved selection. Feedback from meals informs future recommendations.
+
+The design also handles practical complications: changing menus, repeated meals, premium charges, and items already in the cart. Ordering stays under the user's control.
+
+[Explore the meal-planning skill →](skills/cookunity-meal-planner/SKILL.md)
+
+### Authenticated Web Workflow
+**Reusable Workflow Design · Privacy · Verification**
+
+A reusable foundation for assistant tasks on websites where the user is signed in.
+
+It defines the steps around the actual task: checking access, gathering preferences, reading current information, presenting a proposal, obtaining approval, and verifying what changed. Site-specific rules and personal preferences are kept separate so the approach can be adapted.
+
+[Explore the workflow and reference guides →](skills/authenticated-web-workflow/SKILL.md)
+
+### Game Screen Observer
+**Computer Use · Visual Context · Conversational Design**
+
+A skill designed to let an assistant discuss what's happening in a game from screenshots, while the player keeps control.
+
+It specifies how to check that a screenshot actually shows the game, comment on visible events, avoid unwanted spoilers, and stop when capture fails. Observations are brief and bounded; the skill does not provide continuous video or audio access.
+
+[Explore the observer skill →](skills/game-screen-observer/SKILL.md)
+
+### Support Workflow Case Study
+**Troubleshooting · Research · Planning · Customer Communication**
+
+A generalized look at support-assistant workflows I've designed for researching tickets, preparing action plans, drafting updates, and checking release information.
+
+The design separates investigation from writing: first establish the facts and unresolved questions, then draft from that brief. It also distinguishes a completed engineering fix from evidence that the fix was actually deployed.
+
+This public case study describes the architecture with a fictional example. Workplace-specific instructions and records remain private.
+
+[Read the case study →](case-studies/support-workflow.md)
+
+## About the work
+
+This is a growing portfolio of learning projects and workflow designs developed with AI assistance. I use AI for guided development, review, troubleshooting, and documentation.
+
+The ticket project contains executable Python. The custom skills are written instructions that guide an assistant with compatible tools; they are not standalone applications. Each project has its own limits, and inclusion here does not imply production readiness.
+
+For setup instructions, start with the [ticket workflow guide](projects/ticket-review-workflow/README.md). For the checks performed on this collection and the work intentionally left out, see [verification notes](docs/VERIFICATION.md) and [repository scope](docs/SCOPE.md).
