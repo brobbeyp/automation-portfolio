@@ -1,0 +1,10 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+profiles/
+ticket_report*.json
+tickets.json
+*.log

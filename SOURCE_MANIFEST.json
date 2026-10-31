@@ -1,0 +1,142 @@
+[
+  {
+    "path": "skills/authenticated-web-workflow/SKILL.md",
+    "sha256": "5d06e3ba6c1c2ca2d3c9e0ff558c3581ad23873abe6713be2e21da497dcf5296",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/cookunity-meal-planner/SKILL.md",
+    "sha256": "194ba79e1e7c58cc0d82a9bc0fbe4e1127009b20087c407c582c0a0bc0feaba4",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/game-screen-observer/SKILL.md",
+    "sha256": "f155435e178c14d1f38ea62964166cde4cd871cf3f10387f36f51c9db1412360",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/cookunity-meal-planner/agents/openai.yaml",
+    "sha256": "37b9196aa794b1f257719031103b4e78937178561a30501d102b45a7fccdbaee",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/cookunity-meal-planner/references/browser-workflow.md",
+    "sha256": "e005ee64b5d999de6ea7da49acb4ff169c8787bd9a11a8e05aef9cd87e3de82b",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/cookunity-meal-planner/references/intake.md",
+    "sha256": "b3c8f354c54da24135ffa0c0fa51082b8a9b6030947d7dbcf440a17eda7077de",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/cookunity-meal-planner/references/profile-template.md",
+    "sha256": "906aa7ea8c4f0ee93f263721009534776edc1bfd3152ca7ac422966bb1343d6b",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/authenticated-web-workflow/agents/openai.yaml",
+    "sha256": "e2a788ef3786cc942040df3319c0b716f38e635d53b861c1ccfa65af7d89e559",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/authenticated-web-workflow/references/preflight.md",
+    "sha256": "3806ab2bb887cbd27c07d76204eee20c135a60abe2bf6673250a5961076f7f1b",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/authenticated-web-workflow/references/profiles.md",
+    "sha256": "d1ad66ade2c74b421086ac2adbf31768b8712cd3a21668798fe26575be45028a",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "skills/authenticated-web-workflow/references/site-adapters.md",
+    "sha256": "ad7af5b28af4d5cc70890f5e7872ac7be5dcc510f18d8224c9cd88a7c206e66f",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/content_type_check.py",
+    "sha256": "1c3e77464dca3b120bb64ff3732a384f4fb1a9d60194af1d7079c7c764f2f7c8",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/http_practice.py",
+    "sha256": "e278fde6db90fde5c3bbea22219256f3eb1f31398cdf553191c30eb538e3918a",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/post_adapter.py",
+    "sha256": "03dd478fcf529e9a35fb35cd596c9a28f094a5afb33654169f5f941906d72c24",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/review_prompt.txt",
+    "sha256": "6c279c24e75d89d342802591db6107bff02ed04e80b7a9641f7e95825538d2e4",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/review_validator.py",
+    "sha256": "f24962be551708ad687489c0c736ab5674f070d20efd4e9224fe489703b23394",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/review_workflow.py",
+    "sha256": "f47489562aa805899cefe3bddfd4cebccae60ad164c4b645dde8f110ff095ea7",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/session_01.py",
+    "sha256": "6090038b046ce9abd323d56a9308563e357a246effd8e302a5ea74ebd7266076",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/session_07.py",
+    "sha256": "98ce7cf544cdf99cbea74e95a112805fd3ccdad6eb6a717501b7b4d9d3522c94",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_adapter_body.py",
+    "sha256": "479b5968bb0d7ec66e36b2c26f4f39f54c251bae66a8dceb1dc163fadaa2cdd7",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_content_type_check.py",
+    "sha256": "5e4873548f742bfdef3f8548134621d3114b06ac757b78a9fa1bb061ea350bae",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_json_boundary.py",
+    "sha256": "8231fc4205d3f0fa473d979dca07d268425214d96e37d885fc907173dbb86cbf",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_post_adapter.py",
+    "sha256": "dc337f73aa3ff29340eaf6289549fb332e746c0d560c358114d81e32f50faf3c",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_review_evaluation.py",
+    "sha256": "31e11b3159cf2462d4355293be250e8a7c7580c50ce24a7b4537d9f1fb50c1ff",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_review_parsing.py",
+    "sha256": "cc739e18f470f935bd71484cc607de63edf94bfeda9956f22b434f0b89b507b0",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_review_validator.py",
+    "sha256": "35386c8c5e3a6ab6dbc9ba8d15532e433d6f7dc1a6378d637b64c6f6ebfb1288",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_session_01.py",
+    "sha256": "4c1f3abbb52c4bfa778d819218097adcac1f1ea7b3800c96b717d73f1453dceb",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/test_ticket_pipeline.py",
+    "sha256": "e8c2d7b9fb7c5a0f2031d494347c5fc3034fb446e9051ac8fe024e46753bd875",
+    "treatment": "unchanged source copy"
+  }
+]

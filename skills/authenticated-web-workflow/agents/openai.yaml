@@ -1,0 +1,4 @@
+interface:
+  display_name: "Authenticated Web Workflow"
+  short_description: "Run repeatable signed-in website workflows"
+  default_prompt: "Use $authenticated-web-workflow to set up and run this authenticated website task safely."
