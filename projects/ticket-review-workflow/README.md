@@ -36,7 +36,7 @@ To run session_07.py, create fictional tickets.json data:
 
 Running python session_07.py creates ticket_report.json and refuses to overwrite an existing report.
 
-Running python review_workflow.py makes a paid model request. Configure OPENAI_API_KEY privately in the environment and review the configured model/cost before use. No paid requests were run for this export.
+Running python review_workflow.py runs a fixed offline simulation. Setting `text = request_review_text(message, load_review_prompt())` in run_review runs a live mode with a call to an OpenAI model with real API requests. Configure OPENAI_API_KEY privately in the environment and review the configured model/cost before use. No paid requests were run for this export.
 
 test_review_evaluation.py is a demonstration with a deliberately failing stub, not a passing regression test. It is excluded from the runner and may print ERROR or FAIL by design.
 
@@ -45,3 +45,8 @@ test_review_evaluation.py is a demonstration with a deliberately failing stub, n
 Exact-word classification is a learning exercise, not a production incident policy. Empty messages produce an invalid classification. Substring evidence matching does not prove correct reasoning. The validator does not fully enforce the prompt's follow-up-question rule. JSON-fence handling supports a narrow format. No deployment or production-readiness claim is made.
 
 Source files are unchanged. The runner, dependency note, and portfolio documentation were added for this export.
+
+## Run Guides
+
+[Review workflow and Evaluator instructions](EVALUATOR_RUN.md)
+[Source-honesty grader instructions](SOURCE_HONESTY_RUN.md)

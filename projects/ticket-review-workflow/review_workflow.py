@@ -48,9 +48,9 @@ def unraw_review_text(text):
 
 
 def run_review(message):
-    text = request_review_text(message, load_review_prompt())  # Real GPT Request
+    # text = request_review_text(message, load_review_prompt())  # Real GPT Request
 
-    # text = simulate_review(message, load_review_prompt()) #Simulated GPT Request
+    text = simulate_review(message, load_review_prompt())  # Simulated GPT Request
 
     print("Raw response:", repr(text))
     print("Unraw response:", unraw_review_text(text))

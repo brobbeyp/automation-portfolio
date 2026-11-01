@@ -81,7 +81,7 @@
   },
   {
     "path": "projects/ticket-review-workflow/review_workflow.py",
-    "sha256": "f47489562aa805899cefe3bddfd4cebccae60ad164c4b645dde8f110ff095ea7",
+    "sha256": "5cbc9ab3a063d7f0a6e1b1f91a07546ea80f03c0a3990778b6070ee8e0717767",
     "treatment": "unchanged source copy"
   },
   {
@@ -137,6 +137,31 @@
   {
     "path": "projects/ticket-review-workflow/test_ticket_pipeline.py",
     "sha256": "e8c2d7b9fb7c5a0f2031d494347c5fc3034fb446e9051ac8fe024e46753bd875",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/EVALUATOR_RUN.md",
+    "sha256": "86b5f9041914ead5d565a287be14d9cded3fd5816d866b28cd28bc48709d3895",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/SOURCE_HONESTY_RUN.md",
+    "sha256": "71ea3181b8985385d484e42187a955cf28d230e05d5f0e828189968c0ae947b1",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/eval_cases.md",
+    "sha256": "ee8381cb23845858d9d1368e3d5d1fb30e11dd02380ce735fcf91b4ee387fa61",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/source_honesty_eval.py",
+    "sha256": "3d558877288619b33bec186441240bb1562d75f561ca3c9ecb9ab431f748f6a3",
+    "treatment": "unchanged source copy"
+  },
+  {
+    "path": "projects/ticket-review-workflow/source_honesty_prompt.txt",
+    "sha256": "353527e707fa356965185a4858e06d70b706bd4b7c7bb01350ab7d541d8e5f8c",
     "treatment": "unchanged source copy"
   }
 ]
