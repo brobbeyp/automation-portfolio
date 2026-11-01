@@ -18,8 +18,13 @@ def validate_review(review, message):
         raise ValueError("review is missing evidence")
     elif not isinstance(review["evidence"], str):
         raise ValueError("Evidence is not a string")
-    evidence = review["evidence"]
 
+    elif not "follow_up_question" in review:
+        raise ValueError("follow up question is missing")
+    elif not isinstance(review["follow_up_question"], str):
+        raise ValueError("Follow up question is not a string")
+
+    evidence = review["evidence"]
     if evidence.strip() == "":
         raise ValueError("Evidence is empty or only whitespace")
     elif evidence not in message:
