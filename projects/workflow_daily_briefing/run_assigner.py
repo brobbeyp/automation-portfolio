@@ -35,6 +35,12 @@ def test_mutation(case):
     return case
 
 
+def test_display(tasks):
+    group = group_tasks(tasks)
+    display = display_tasks(group)
+    return display
+
+
 def group_tasks(tasks):
     result = {"deadline": [], "focus": [], "other": []}
 
@@ -46,6 +52,29 @@ def group_tasks(tasks):
         else:
             result["other"].append(task)
     return result
+
+
+def display_tasks(groupedTasks):
+
+    deadline = "Tasks with a deadline:"
+    if groupedTasks["deadline"] == []:
+        deadline += " None."
+    for task in groupedTasks["deadline"]:
+        deadline += f" {task['text']}."
+
+    focus = "Today's Focus:"
+    if groupedTasks["focus"] == []:
+        focus += " None."
+    for task in groupedTasks["focus"]:
+        focus += f" {task['text']}."
+
+    other = "Other tasks:"
+    if groupedTasks["other"] == []:
+        other += " None."
+    for task in groupedTasks["other"]:
+        other += f" {task['text']}."
+
+    return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
 
 
 if __name__ == "__main__":
@@ -119,7 +148,38 @@ if __name__ == "__main__":
         "assignment": "focus",
         "focus-today": True,
     }
-    
+    testCase11 = {
+        "text": "This case tests displaying grouped tasks as a readable briefing, routed to deadline",
+        "due_date": "2026-11-04",
+        "tags": [],
+        "source": "daily-note.md",
+        "focus-today": False,
+        "assignment": "deadline",
+    }
+    testCase12 = {
+        "text": "This case tests displaying grouped tasks as a readable briefing, routed to other",
+        "due_date": "",
+        "tags": [],
+        "source": "daily-note.md",
+        "focus-today": False,
+        "assignment": "other",
+    }
+    testCase13 = {
+        "text": "This case tests displaying grouped tasks as a readable briefing, routed to other also, and confirms order is preserved",
+        "due_date": "",
+        "tags": [],
+        "source": "daily-note.md",
+        "focus-today": False,
+        "assignment": "other",
+    }
+    testCase14 = {
+        "text": "This case tests displaying grouped tasks as a readable brief, routed to focus",
+        "due_date": None,
+        "tags": [],
+        "source": "daily-note.md",
+        "focus-today": True,
+        "assignment": "focus",
+    }
     assert run_assigner(testCase) == {
         "text": "Prepare for Ronco today.",
         "due_date": None,
@@ -195,3 +255,17 @@ if __name__ == "__main__":
             testCase8,
         ],
     }
+
+    assert (test_display([])) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: None.\n"
+        "Today's Focus: None.\n"
+        "Other tasks: None."
+    )
+
+    assert (test_display([testCase14, testCase13, testCase12, testCase11])) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: This case tests displaying grouped tasks as a readable briefing, routed to deadline.\n"
+        "Today's Focus: This case tests displaying grouped tasks as a readable brief, routed to focus.\n"
+        "Other tasks: This case tests displaying grouped tasks as a readable briefing, routed to other also, and confirms order is preserved. This case tests displaying grouped tasks as a readable briefing, routed to other."
+    )
