@@ -35,6 +35,15 @@ def test_mutation(case):
     return case
 
 
+def test_run_mutation(cases):
+    casesCopy = [case.copy() for case in cases]
+
+    test_run(cases)
+
+    for i in range(len(cases)):
+        assert (cases[i]) == casesCopy[i]
+
+
 def test_display(tasks):
     group = group_tasks(tasks)
     display = display_tasks(group)
@@ -77,9 +86,15 @@ def display_tasks(groupedTasks):
     return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
 
 
+def test_run(tasks):
+    assignedTasks = run_multiple_assigners(tasks)
+    groupedTasks = group_tasks(assignedTasks)
+    return display_tasks(groupedTasks)
+
+
 if __name__ == "__main__":
     testCase = {
-        "text": "Prepare for Ronco today.",
+        "text": "Prepare for Ronco today",
         "due_date": None,
         "tags": [],
         "source": "daily-note.md",
@@ -180,8 +195,32 @@ if __name__ == "__main__":
         "focus-today": True,
         "assignment": "focus",
     }
+    testCase15 = {
+        "text": "Test full run, routed to other",
+        "due_date": None,
+        "tags": [],
+        "source": "daily-note.md",
+    }
+    testCase16 = {
+        "text": "Test full run, routed to deadline",
+        "due_date": "2026-11-04",
+        "tags": [],
+        "source": "daily-note.md",
+    }
+    testCase17 = {
+        "text": "Test full run, routed to focus",
+        "due_date": None,
+        "tags": ["#focus"],
+        "source": "daily-note.md",
+    }
+    testCase18 = {
+        "text": "Test full run, routed to focus, checking order",
+        "due_date": None,
+        "tags": ["#focus"],
+        "source": "daily-note.md",
+    }
     assert run_assigner(testCase) == {
-        "text": "Prepare for Ronco today.",
+        "text": "Prepare for Ronco today",
         "due_date": None,
         "tags": [],
         "source": "daily-note.md",
@@ -218,7 +257,7 @@ if __name__ == "__main__":
 
     assert (run_multiple_assigners([testCase, testCase2, testCase3])) == [
         {
-            "text": "Prepare for Ronco today.",
+            "text": "Prepare for Ronco today",
             "due_date": None,
             "tags": [],
             "source": "daily-note.md",
@@ -269,3 +308,19 @@ if __name__ == "__main__":
         "Today's Focus: This case tests displaying grouped tasks as a readable brief, routed to focus.\n"
         "Other tasks: This case tests displaying grouped tasks as a readable briefing, routed to other also, and confirms order is preserved. This case tests displaying grouped tasks as a readable briefing, routed to other."
     )
+
+    assert (test_run([])) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: None.\n"
+        "Today's Focus: None.\n"
+        "Other tasks: None."
+    )
+
+    assert (test_run([testCase15, testCase16, testCase18, testCase17])) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: Test full run, routed to deadline.\n"
+        "Today's Focus: Test full run, routed to focus, checking order. Test full run, routed to focus.\n"
+        "Other tasks: Test full run, routed to other."
+    )
+
+    test_run_mutation([testCase15, testCase16, testCase18, testCase17])
