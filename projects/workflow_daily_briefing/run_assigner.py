@@ -64,25 +64,34 @@ def group_tasks(tasks):
 
 
 def display_tasks(groupedTasks):
+    punctuation = ["?", ".", "!"]
 
     deadline = "Tasks with a deadline:"
     if groupedTasks["deadline"] == []:
         deadline += " None."
     for task in groupedTasks["deadline"]:
-        deadline += f" {task['text']}."
+        if task["text"][-1:] in punctuation:
+            deadline += f" {task['text']}"
+        else:
+            deadline += f" {task['text']}."
 
     focus = "Today's Focus:"
     if groupedTasks["focus"] == []:
         focus += " None."
     for task in groupedTasks["focus"]:
-        focus += f" {task['text']}."
+        if task["text"][-1:] in punctuation:
+            focus += f" {task['text']}"
+        else:
+            focus += f" {task['text']}."
 
     other = "Other tasks:"
     if groupedTasks["other"] == []:
         other += " None."
     for task in groupedTasks["other"]:
-        other += f" {task['text']}."
-
+        if task["text"][-1:] in punctuation:
+            other += f" {task['text']}"
+        else:
+            other += f" {task['text']}."
     return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
 
 
@@ -219,6 +228,24 @@ if __name__ == "__main__":
         "tags": ["#focus"],
         "source": "daily-note.md",
     }
+    testCase19 = {
+        "text": "Test full run, routed to focus, checking that punctuation is preserved!",
+        "due_date": None,
+        "tags": [],
+        "source": "daily-note.md",
+    }
+    testCase20 = {
+        "text": "Test full run, routed to focus, checking that punctuation is preserved?",
+        "due_date": "2026-11-13",
+        "tags": [],
+        "source": "daily-note.md",
+    }
+    testCase21 = {
+        "text": "Test full run, routed to focus, checking that punctuation is preserved.",
+        "due_date": None,
+        "tags": ["#focus"],
+        "source": "daily-note.md",
+    }
     assert run_assigner(testCase) == {
         "text": "Prepare for Ronco today",
         "due_date": None,
@@ -324,3 +351,22 @@ if __name__ == "__main__":
     )
 
     test_run_mutation([testCase15, testCase16, testCase18, testCase17])
+
+    assert test_run([testCase19]) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: None.\n"
+        "Today's Focus: None.\n"
+        "Other tasks: Test full run, routed to focus, checking that punctuation is preserved!"
+    )
+    assert test_run([testCase20]) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: Test full run, routed to focus, checking that punctuation is preserved?\n"
+        "Today's Focus: None.\n"
+        "Other tasks: None."
+    )
+    assert test_run([testCase21]) == (
+        "Hello, Peter! Today's tasks are as follows:\n"
+        "Tasks with a deadline: None.\n"
+        "Today's Focus: Test full run, routed to focus, checking that punctuation is preserved.\n"
+        "Other tasks: None."
+    )
