@@ -1,6 +1,11 @@
 import json
 from pathlib import Path
 
+index = {
+    "AGENTS.md": "Instructions applicable to work under this folder.",
+    "PROGRESS.md": "Project checkpoint, recent evidence, and next steps.",
+}
+
 
 def loadCase(
     caseFileName,
@@ -55,9 +60,16 @@ def generateContext(
 
 
 def generateContextString(paths):
-    result = "Session context discovered, nearest folder first:\n"
+    if paths == []:
+        return "No context files found within the Workspace boundary."
+
+    result = "Session context discovered, nearest folder first:"
     for path in paths:
-        result += path + "\n"
+        result += "\n\n" + path
+
+        filename = path[path.rfind("\\") + 1 :]
+        if filename in index:
+            result += "\nPurpose: " + index[filename]
 
     return result
 
@@ -94,4 +106,11 @@ if __name__ == "__main__":
 
     assert (testGenerateContext("testCase4.json")) == []
 
-    print(testGenerateContextString("testCase5.json"))
+    expected = (
+        "Session context discovered, nearest folder first:\n"
+        "\n"
+        r"C:\Users\brobb\Documents\Workspace\AGENTS.md"
+        "\nPurpose: Instructions applicable to work under this folder."
+    )
+
+    assert testGenerateContextString("testCase5.json") == expected
