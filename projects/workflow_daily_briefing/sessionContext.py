@@ -9,7 +9,7 @@ index = {
 
 def loadCase(
     caseFileName,
-):  # loads a JSON case document as an object, accepts file name in same cwd
+):  # loads a JSON case document as an object, accepts file name in same cwd, single cases return an object, multiple cases return a list of objects
     with open(caseFileName, "r", encoding="utf-8") as file:
         case = json.load(file)
     return case
@@ -53,7 +53,9 @@ def generateContext(
     return result
 
 
-def generateContextString(paths):
+def generateContextString(
+    paths,
+):  # Accepts a list of paths and generates a string including each path and it's purpose
     if paths == []:
         return "No context files found within the Workspace boundary."
 
@@ -67,13 +69,22 @@ def generateContextString(paths):
     return result
 
 
-def testGenerateContext(filename):
-    case = loadCase(filename)  # Select a case to load
-    caseCWD = case["cwd"]  # Select the current working directory
+def testGenerateContext(
+    filename,
+):  # Accepts either a single cast as a dict or multiple cases as a list and outputs a list of paths by running generateContext
+    load = loadCase(filename)  # Select a case/cases to load
+    if type(load) == dict:  # Handles single cases
+        caseCWD = load["cwd"]  # Select the current working directory
 
-    return generateContext(
-        caseCWD
-    )  # Pass the cwd str to workspaceContext, which returns a list of path strings
+        return generateContext(
+            caseCWD
+        )  # Pass the cwd str to workspaceContext, which returns a list of path strings
+
+    elif type(load) == list:  # Handles multiple cases in a list
+        result = []
+        for case in load:
+            result += generateContext(case["cwd"])
+        return result
 
 
 def testGenerateContextString(filename):
@@ -110,3 +121,17 @@ if __name__ == "__main__":
 
     expectedEmpty = "No context files found within the Workspace boundary."  # Empty case expected output
     assert testGenerateContextString("testCase4.json") == expectedEmpty
+
+    expectedMultiplePaths = (
+        "Session context discovered, nearest folder first:\n"
+        "\n"
+        r"C:\Users\brobb\Documents\Workspace\Code\Tutor\AGENTS.md"
+        "\nPurpose: Instructions applicable to work under this folder.\n\n"
+        r"C:\Users\brobb\Documents\Workspace\Code\Tutor\PROGRESS.md"
+        "\nPurpose: Project checkpoint, recent evidence, and next steps.\n\n"
+        r"C:\Users\brobb\Documents\Workspace\AGENTS.md"
+        "\nPurpose: Instructions applicable to work under this folder.\n\n"
+        r"C:\Users\brobb\Documents\Workspace\AGENTS.md"
+        "\nPurpose: Instructions applicable to work under this folder."
+    )
+    assert (testGenerateContextString("testCase6.json")) == expectedMultiplePaths
