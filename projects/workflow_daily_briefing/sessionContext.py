@@ -26,35 +26,29 @@ def generateContext(
     if cwdPath.is_relative_to(limit):  # Checks if the cwdPath is under the limit
         while (
             cwdPath != limit
-        ):  # While not at the limit, check if the path for AGENTS/PROGRESS exists. If it does, add those paths as strings to the result list. Then change the cwdPath to the parent and repeat.
-            agentsPath = cwdPath / "AGENTS.md"
-            progressPath = cwdPath / "PROGRESS.md"
+        ):  # While not at the limit, check if the path for each source in index exists. If it does, add those paths as strings to the result list. Then change the cwdPath to the parent and repeat.
+            for source in index:
+                sourcePath = cwdPath / source
 
-            if agentsPath.is_file():  # Checking for AGENTS.MD
-                result.append(
-                    str(agentsPath)
-                )  # Convert Path object to a string and append to the result
-
-            if progressPath.is_file():  # Checking for PROGRESS.MD
-                result.append(
-                    str(progressPath)
-                )  # Convert Path object to a string and append to the result
+                if sourcePath.is_file():  # Check if source file exists in the current path and add it to result if it does
+                    result.append(
+                        str(
+                            sourcePath
+                        )  # Convert Path object to a string and append to the result
+                    )
 
             cwdPath = cwdPath.parent
 
         if cwdPath == limit:  # At the limit, do a final check and add that to result
-            agentsPath = cwdPath / "AGENTS.md"
-            progressPath = cwdPath / "PROGRESS.md"
+            for source in index:
+                sourcePath = cwdPath / source
 
-            if agentsPath.is_file():  # Checking for AGENTS.MD
-                result.append(
-                    str(agentsPath)
-                )  # Convert Path object to a string and append to the result
-
-            if progressPath.is_file():  # Checking for PROGRESS.MD
-                result.append(
-                    str(progressPath)
-                )  # Convert Path object to a string and append to the result
+                if sourcePath.is_file():  # Check if source file exists in the current path and add it to result if it does
+                    result.append(
+                        str(
+                            sourcePath
+                        )  # Convert Path object to a string and append to the result
+                    )
 
     return result
 
@@ -67,9 +61,8 @@ def generateContextString(paths):
     for path in paths:
         result += "\n\n" + path
 
-        filename = path[path.rfind("\\") + 1 :]
-        if filename in index:
-            result += "\nPurpose: " + index[filename]
+        if Path(path).name in index:
+            result += "\nPurpose: " + index[Path(path).name]
 
     return result
 
@@ -107,10 +100,13 @@ if __name__ == "__main__":
     assert (testGenerateContext("testCase4.json")) == []
 
     expected = (
+        # Single path expected output
         "Session context discovered, nearest folder first:\n"
         "\n"
         r"C:\Users\brobb\Documents\Workspace\AGENTS.md"
         "\nPurpose: Instructions applicable to work under this folder."
     )
-
     assert testGenerateContextString("testCase5.json") == expected
+
+    expectedEmpty = "No context files found within the Workspace boundary."  # Empty case expected output
+    assert testGenerateContextString("testCase4.json") == expectedEmpty
