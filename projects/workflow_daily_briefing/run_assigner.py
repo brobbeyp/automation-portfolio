@@ -106,19 +106,28 @@ def load_tasks(
         with open(
             Path(path).resolve(), "r", encoding="utf-8"
         ) as file:  # open valid JSON document and parse into dict
-            cases = json.load(file)
+            tasks = json.load(file)
+
+        if type(tasks) != list:  # Raises an error if not a list
+            raise ValueError("File must contain a JSON array")
+
+        for task in tasks:
+            if type(task) != dict:  # Raises an error if each task is not a dict
+                raise ValueError("Each item in the list must be a dict")
 
         required_fields = ["text", "due_date", "tags", "source"]
 
-        for case in cases:
-            for field in required_fields:  # Check if required fields are present. Raises ValueError if missing fields.
-                if field not in case:
-                    print("field=", field, "case=", case)
-                    raise ValueError(f"Required field, {field}, missing in case")
+        for task in (
+            tasks
+        ):  # Check if required fields are present. Raises ValueError if missing fields.
+            for field in required_fields:
+                if field not in task:
+                    raise ValueError(f"Required field, {field}, missing in task")
 
-        return cases  # returns a list of dicts
+        return tasks  # returns a list of dicts
+
     except json.JSONDecodeError as error:  # Handle JSONDecoreErrors
-        print("Error: ", error)
+        raise ValueError("Malformed JSON in file")
 
 
 def test_run(tasks):
@@ -406,9 +415,27 @@ if __name__ == "__main__":
         }
     ]
 
-    assert (
+    assert (  # Test successful run
         load_tasks(
             r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase.json"
         )
         == expectedLoad
     )
+
+    try:  # Test malformed JSON
+        load_tasks(
+            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase2.json"
+        )
+    except ValueError as error:
+        assert str(error) == "Malformed JSON in file"
+    else:
+        raise AssertionError("Malformed JSON Test - Failed")
+
+    try:  # Test missing fields
+        load_tasks(
+            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase3.json"
+        )
+    except ValueError as error:
+        print(error)
+    else:
+        raise AssertionError("Missing Fields Test - Failed")
