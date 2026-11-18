@@ -1,3 +1,7 @@
+from pathlib import Path
+import json
+
+
 def assign_item(item):
     if item["due_date"]:
         return "deadline"
@@ -93,6 +97,14 @@ def display_tasks(groupedTasks):
         else:
             other += f" {task['text']}."
     return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
+
+
+def load_tasks(path):
+
+    with open(Path(path).resolve(), "r", encoding="utf-8") as file:
+        cases = json.load(file)
+        
+    return [cases]
 
 
 def test_run(tasks):
@@ -369,4 +381,18 @@ if __name__ == "__main__":
         "Tasks with a deadline: None.\n"
         "Today's Focus: Test full run, routed to focus, checking that punctuation is preserved.\n"
         "Other tasks: None."
+    )
+
+    expectedLoad = [
+        {
+            "hook_event_name": "SessionStart",
+            "source": "startup",
+            "cwd": "C:/Users/brobb/Documents/Workspace/Code/Tutor",
+        }
+    ]
+    assert (
+        load_tasks(
+            "C:\\Users\\brobb\\Documents\\Workspace\\Code\\Tutor\\projects\\workflow_daily_briefing\\testCase.json"
+        )
+        == expectedLoad
     )
