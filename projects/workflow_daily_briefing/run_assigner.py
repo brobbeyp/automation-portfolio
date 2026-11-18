@@ -99,12 +99,12 @@ def display_tasks(groupedTasks):
     return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
 
 
-def load_tasks(path):
+def load_tasks(path): #Accepts a path, loads a JSON file at that path, and returns a list of dicts, with each dict representing a 
 
-    with open(Path(path).resolve(), "r", encoding="utf-8") as file:
+    with open(Path(path).resolve(), "r", encoding="utf-8") as file: #open valid JSON document and parse into dict
         cases = json.load(file)
-        
-    return [cases]
+
+    return [cases] #returns a list of dicts
 
 
 def test_run(tasks):
