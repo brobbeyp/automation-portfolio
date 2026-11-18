@@ -99,12 +99,26 @@ def display_tasks(groupedTasks):
     return f"Hello, Peter! Today's tasks are as follows:\n{deadline}\n{focus}\n{other}"
 
 
-def load_tasks(path): #Accepts a path, loads a JSON file at that path, and returns a list of dicts, with each dict representing a 
+def load_tasks(
+    path,
+):  # Accepts a path, loads a JSON file at that path, and returns a list of dicts, with each dict representing a
+    try:
+        with open(
+            Path(path).resolve(), "r", encoding="utf-8"
+        ) as file:  # open valid JSON document and parse into dict
+            cases = json.load(file)
 
-    with open(Path(path).resolve(), "r", encoding="utf-8") as file: #open valid JSON document and parse into dict
-        cases = json.load(file)
+        required_fields = ["text", "due_date", "tags", "source"]
 
-    return [cases] #returns a list of dicts
+        for case in cases:
+            for field in required_fields:  # Check if required fields are present. Raises ValueError if missing fields.
+                if field not in case:
+                    print("field=", field, "case=", case)
+                    raise ValueError(f"Required field, {field}, missing in case")
+
+        return cases  # returns a list of dicts
+    except json.JSONDecodeError as error:  # Handle JSONDecoreErrors
+        print("Error: ", error)
 
 
 def test_run(tasks):
@@ -385,14 +399,16 @@ if __name__ == "__main__":
 
     expectedLoad = [
         {
-            "hook_event_name": "SessionStart",
-            "source": "startup",
-            "cwd": "C:/Users/brobb/Documents/Workspace/Code/Tutor",
+            "text": "Prepare for Ronco today",
+            "due_date": None,
+            "tags": [],
+            "source": "daily-note.md",
         }
     ]
+
     assert (
         load_tasks(
-            "C:\\Users\\brobb\\Documents\\Workspace\\Code\\Tutor\\projects\\workflow_daily_briefing\\testCase.json"
+            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase.json"
         )
         == expectedLoad
     )
