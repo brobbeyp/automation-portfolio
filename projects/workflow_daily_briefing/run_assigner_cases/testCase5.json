@@ -1,0 +1,28 @@
+[
+    {
+        "text": "First task, routed to other",
+        "due_date": null,
+        "tags": [],
+        "source": "daily-note.md"
+    },
+    {
+        "text": "Second task, routed to other",
+        "due_date": null,
+        "tags": [],
+        "source": "daily-note.md"
+    },
+    {
+        "text": "Third task, routed to deadline",
+        "due_date": "2026-11-04",
+        "tags": [],
+        "source": "daily-note.md"
+    },
+    {
+        "text": "Fourth task, routed to focus",
+        "due_date": null,
+        "tags": [
+            "#focus"
+        ],
+        "source": "daily-note.md"
+    }
+]
