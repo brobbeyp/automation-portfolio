@@ -442,23 +442,26 @@ if __name__ == "__main__":
             r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase3.json"
         )
     except ValueError as error:
-        print(error)
+        assert error
     else:
         raise AssertionError("Missing Fields Test - Failed")
 
-    expectedTestRun = ( 
+    expectedTestRun = (
         "Hello, Peter! Today's tasks are as follows:\n"
         "Tasks with a deadline: None.\n"
         "Today's Focus: None.\n"
         "Other tasks: Prepare for Ronco today."
     )
-    assert ( # Test for single task JSON loading, assignment, grouping, string generation, and display output string. 
-        test_run(
-            load_tasks(
-                r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase.json"
+    assert (
+        (  # Test for single task JSON loading, assignment, grouping, string generation, and display output string.
+            test_run(
+                load_tasks(
+                    r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase.json"
+                )
             )
         )
-    ) == expectedTestRun
+        == expectedTestRun
+    )
 
     expectedTestRunMultipleTasks = (
         "Hello, Peter! Today's tasks are as follows:\n"
@@ -466,22 +469,19 @@ if __name__ == "__main__":
         "Today's Focus: Fourth task, routed to focus.\n"
         "Other tasks: First task, routed to other. Second task, routed to other."
     )
-    assert ( # Test for multiple task JSON loading, assignment, grouping, string generation, and display output string.
-        test_run(
-            load_tasks(
-                r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase5.json"
+    assert (
+        (  # Test for multiple task JSON loading, assignment, grouping, string generation, and display output string.
+            test_run(
+                load_tasks(
+                    r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase5.json"
+                )
             )
         )
-    ) == expectedTestRunMultipleTasks
-
-    assert ( # Test for 
-        briefing_from_file(
-            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase5.json"
-        )
-    ) == expectedTestRunMultipleTasks
-
-    print(
-        briefing_from_file(
-            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase5.json"
-        )
+        == expectedTestRunMultipleTasks
     )
+
+    assert (  # Test for
+        briefing_from_file(
+            r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase5.json"
+        )
+    ) == expectedTestRunMultipleTasks
