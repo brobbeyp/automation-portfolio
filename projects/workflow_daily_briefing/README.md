@@ -12,7 +12,7 @@
 - Files containing malformed JSON raise a `ValueError` and files missing required fields raise a `ValueError` that names the missing field.
 
 - Running `run_assigner.py` executes the built-in assertions and prints the briefing for the hard-coded fixture path.
-  
+
 
 ### Output:
 - A successful run outputs the following briefing string:
