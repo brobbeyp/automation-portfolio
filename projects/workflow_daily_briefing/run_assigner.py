@@ -442,7 +442,7 @@ if __name__ == "__main__":
             r"C:\Users\brobb\Documents\Workspace\Code\Tutor\projects\workflow_daily_briefing\run_assigner_cases\testCase3.json"
         )
     except ValueError as error:
-        assert error
+        assert str(error) == "Required field, due_date, missing in task"
     else:
         raise AssertionError("Missing Fields Test - Failed")
 
