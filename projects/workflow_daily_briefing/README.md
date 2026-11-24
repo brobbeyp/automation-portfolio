@@ -11,7 +11,9 @@
 
 - Files containing malformed JSON raise a `ValueError` and files missing required fields raise a `ValueError` that names the missing field. 
 
-- Running `run_assigner.py` executes the built-in assertions and prints the briefing for the hard-coded fixture path.
+### Run the checks
+
+From the repository root, run `python -B .\projects\workflow_daily_briefing\run_assigner.py` in PowerShell. The current assertion harness references fixtures by absolute path in the original Windows checkout. A passing run finishes silently. The function `briefing_from_file(path)` returns the briefing text shown in the examples below.
   
 
 ### Output: 
